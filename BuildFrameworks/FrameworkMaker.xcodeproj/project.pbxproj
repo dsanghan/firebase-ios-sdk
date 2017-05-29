@@ -459,6 +459,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_ON_DEMAND_RESOURCES = YES;
+				IBSC_MODULE = "";
 				INFOPLIST_FILE = FrameworkMakerMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -500,6 +501,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_ON_DEMAND_RESOURCES = YES;
+				IBSC_MODULE = "";
 				INFOPLIST_FILE = FrameworkMakerMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -555,6 +557,7 @@
 				D74F78321EDBF9F300149477 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

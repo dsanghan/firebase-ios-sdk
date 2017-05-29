@@ -160,7 +160,7 @@ func buildFramework(withName framework: String, outputDir: String) {
   let headersDir = frameworkDir + "/Headers"
   syncExec(command:"/bin/mv", args:[NSString(string:thinArchives[0]).deletingLastPathComponent, headersDir])
   syncExec(command:"/bin/rm", args:["-rf", buildDir])
-  makeModuleMap(framework:framework, dir:frameworkDir)
+//  makeModuleMap(framework:framework, dir:frameworkDir)
 }
 
 let frameworks = processOptions()
