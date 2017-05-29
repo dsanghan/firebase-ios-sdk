@@ -38,13 +38,17 @@ static const NSTimeInterval kLegacyRegistrationTimeout = 30;
   /** @var _application
       @brief The @c UIApplication to request the token from.
    */
+#if TARGET_OS_IPHONE
   UIApplication *_application;
-
+#endif
+    
   /** @var _pendingCallbacks
       @brief The list of all pending callbacks for the APNs token.
    */
   NSMutableArray<FIRAuthAPNSTokenCallback> *_pendingCallbacks;
 }
+
+#if TARGET_OS_IPHONE
 
 - (instancetype)initWithApplication:(UIApplication *)application {
   self = [super init];
@@ -55,6 +59,19 @@ static const NSTimeInterval kLegacyRegistrationTimeout = 30;
   }
   return self;
 }
+
+#else
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+
+    }
+    return self;
+}
+
+
+#endif
 
 - (void)getTokenWithCallback:(FIRAuthAPNSTokenCallback)callback {
   if (_token) {
@@ -67,6 +84,7 @@ static const NSTimeInterval kLegacyRegistrationTimeout = 30;
   }
   _pendingCallbacks =
       [[NSMutableArray<FIRAuthAPNSTokenCallback> alloc] initWithObjects:callback, nil];
+#if TARGET_OS_IPHONE
   dispatch_async(dispatch_get_main_queue(), ^{
     if ([_application respondsToSelector:@selector(registerForRemoteNotifications)]) {
       [_application registerForRemoteNotifications];
@@ -77,6 +95,7 @@ static const NSTimeInterval kLegacyRegistrationTimeout = 30;
 #pragma clang diagnostic pop
     }
   });
+#endif
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_timeout * NSEC_PER_SEC)),
                                FIRAuthGlobalWorkQueue(), ^{
     [self callBack];

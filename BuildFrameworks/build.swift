@@ -33,11 +33,11 @@ func colorPrint(color: Colors, text: String) {
   print(color.rawValue + text + "\u{001B}[0;0m")
 }
 
-let allFrameworks = ["FirebaseAuth",
-                     "FirebaseCore",
-                     "FirebaseDatabase",
-                     "FirebaseMessaging",
-                     "FirebaseStorage"]
+let allFrameworks = ["FirebaseAuth-OSX",
+                     "FirebaseCore-OSX",
+                     "FirebaseDatabase-OSX",
+                     "FirebaseMessaging-OSX",
+                     "FirebaseStorage-OSX"]
 
 let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 let url = URL(fileURLWithPath: CommandLine.arguments[0], relativeTo: currentDirectoryURL)
@@ -120,7 +120,7 @@ func buildThin(framework: String, arch: String, sdk: String, parentDir: String) 
   let bitcode = (sdk == "iphoneos") ? ["OTHER_CFLAGS=\"" + "-fembed-bitcode\""] : []
   let args = standardOptions + ["ARCHS=" + arch, "BUILD_DIR=" + buildDir, "-sdk", sdk] + bitcode
   syncExec(command:"/usr/bin/xcodebuild", args:args)
-  return [buildDir + "/Release-" + sdk + "/" + framework + "/lib" + framework + ".a"]
+  return [buildDir + "/Release/" + framework + "/lib" + framework + ".a"]
 }
 
 func createFile(file: String, content: String) {
@@ -147,10 +147,10 @@ func makeModuleMap(framework: String, dir: String) {
 func buildFramework(withName framework: String, outputDir: String) {
   let buildDir = tempDir()
   var thinArchives = [String]()
-  thinArchives += buildThin(framework:framework, arch:"arm64", sdk:"iphoneos", parentDir:buildDir)
-  thinArchives += buildThin(framework:framework, arch:"armv7", sdk:"iphoneos", parentDir:buildDir)
-  thinArchives += buildThin(framework:framework, arch:"i386", sdk:"iphonesimulator", parentDir:buildDir)
-  thinArchives += buildThin(framework:framework, arch:"x86_64", sdk:"iphonesimulator", parentDir:buildDir)
+//  thinArchives += buildThin(framework:framework, arch:"arm64", sdk:"iphoneos", parentDir:buildDir)
+//  thinArchives += buildThin(framework:framework, arch:"armv7", sdk:"iphoneos", parentDir:buildDir)
+//  thinArchives += buildThin(framework:framework, arch:"i386", sdk:"iphonesimulator", parentDir:buildDir)
+  thinArchives += buildThin(framework:framework, arch:"x86_64", sdk:"macosx", parentDir:buildDir)
 
   let frameworkDir = outputDir + "/" + framework + ".framework"
   syncExec(command:"/bin/mkdir", args:["-p", frameworkDir])
@@ -168,7 +168,7 @@ colorPrint(color:Colors.green, text:"Building \(frameworks)")
 
 let outputDir = tempDir()
 
-syncExec(command:"/usr/local/bin/pod", args:["update"])
+//syncExec(command:"/usr/local/bin/pod", args:["update"])
 
 for f in frameworks {
   buildFramework(withName:f, outputDir:outputDir)

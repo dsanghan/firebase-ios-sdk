@@ -16,7 +16,9 @@
 
 #import "FIRMessagingContextManagerService.h"
 
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 #import "FIRMessagingDefines.h"
 #import "FIRMessagingLogger.h"
@@ -128,6 +130,7 @@ typedef NS_ENUM(NSUInteger, FIRMessagingContextManagerMessageType) {
 
 + (void)scheduleLocalNotificationForMessage:(NSDictionary *)message
                                      atDate:(NSDate *)date {
+#if TARGET_OS_IPHONE
   NSDictionary *apsDictionary = message;
   UILocalNotification *notification = [[UILocalNotification alloc] init];
 
@@ -168,6 +171,7 @@ typedef NS_ENUM(NSUInteger, FIRMessagingContextManagerMessageType) {
   }
 
   [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+#endif
 }
 
 + (NSDictionary *)parseDataFromMessage:(NSDictionary *)message {

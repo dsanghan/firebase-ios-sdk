@@ -21,17 +21,6 @@
 #import "Private/FIRAuthErrorUtils.h"
 #import "Private/FIRAuthUserDefaultsStorage.h"
 
-#if FIRAUTH_USER_DEFAULTS_STORAGE_AVAILABLE
-#import <UIKit/UIKit.h>
-
-/** @var kOSVersionMatcherForUsingUserDefaults
-    @brief The regular expression to match all OS versions that @c FIRAuthUserDefaultsStorage is
-        used instead if available.
- */
-static NSString *const kOSVersionMatcherForUsingUserDefaults = @"^10\\.[01](\\..*)?$";
-
-#endif  // FIRAUTH_USER_DEFAULTS_STORAGE_AVAILABLE
-
 /** @var kAccountPrefix
     @brief The prefix string for keychain item account attribute before the key.
     @remarks A number "1" is encoded in the prefix in case we need to upgrade the scheme in future.
@@ -53,20 +42,6 @@ static NSString *const kAccountPrefix = @"firebase_auth_1_";
 }
 
 - (id<FIRAuthStorage>)initWithService:(NSString *)service {
-
-#if FIRAUTH_USER_DEFAULTS_STORAGE_AVAILABLE
-
-  NSString *OSVersion = [UIDevice currentDevice].systemVersion;
-  NSRegularExpression *regex =
-      [NSRegularExpression regularExpressionWithPattern:kOSVersionMatcherForUsingUserDefaults
-                                                options:0
-                                                  error:NULL];
-  if ([regex numberOfMatchesInString:OSVersion options:0 range:NSMakeRange(0, OSVersion.length)]) {
-    return (id<FIRAuthStorage>)[[FIRAuthUserDefaultsStorage alloc] initWithService:service];
-  }
-
-#endif  // FIRAUTH_USER_DEFAULTS_STORAGE_AVAILABLE
-
   self = [super init];
   if (self) {
     _service = [service copy];

@@ -156,8 +156,12 @@ static BOOL isAppEncrypted() {
 }
 
 + (BOOL)isSimulator {
+#if TARGET_OS_IPHONE
   NSString *platform = [FIRAppEnvironmentUtil deviceModel];
   return [platform isEqual:@"x86_64"] || [platform isEqual:@"i386"];
+#else
+    return NO;
+#endif
 }
 
 + (NSString *)deviceModel {
@@ -174,7 +178,11 @@ static BOOL isAppEncrypted() {
 }
 
 + (NSString *)systemVersion {
+#if TARGET_OS_IPHONE
   return [UIDevice currentDevice].systemVersion;
+#else
+    return [[NSProcessInfo processInfo] operatingSystemVersionString];
+#endif
 }
 
 + (BOOL)isAppExtension {
@@ -183,6 +191,7 @@ static BOOL isAppEncrypted() {
   return appExtension;
 }
 
+#if TARGET_OS_IPHONE
 + (UIApplication *)sharedApplication {
   if ([FIRAppEnvironmentUtil isAppExtension]) {
     return nil;
@@ -195,6 +204,7 @@ static BOOL isAppEncrypted() {
   }
   return sharedApplication;
 }
+#endif
 
 #pragma mark - Helper methods
 

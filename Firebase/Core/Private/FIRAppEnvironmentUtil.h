@@ -16,7 +16,9 @@
 
 #import <Foundation/Foundation.h>
 
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 @interface FIRAppEnvironmentUtil : NSObject
 
@@ -42,7 +44,9 @@
 /// Indicates whether it is running inside an extension or an app.
 + (BOOL)isAppExtension;
 
+#if TARGET_OS_IPHONE
 /// Returns the [UIApplication sharedApplication] if it is running on an app, not an extension.
 + (UIApplication *)sharedApplication;
+#endif
 
 @end

@@ -44,7 +44,9 @@ static id noop(id object, SEL cmd, ...) {
   /** @var _appDelegate
       @brief The application delegate whose method is being swizzled.
    */
+#if TARGET_OS_IPHONE
   id<UIApplicationDelegate> _appDelegate;
+#endif
 
   /** @var _orginalImplementationsBySelector
       @brief A map from selectors to original implementations that have been swizzled.
@@ -56,6 +58,8 @@ static id noop(id object, SEL cmd, ...) {
    */
   NSPointerArray *_handlers;
 }
+
+#if TARGET_OS_IPHONE
 
 - (nullable instancetype)initWithApplication:(nullable UIApplication *)application {
   self = [super init];
@@ -111,12 +115,25 @@ static id noop(id object, SEL cmd, ...) {
   return self;
 }
 
+#else
+
+- (instancetype)init {
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
+
+#endif
+
 - (void)dealloc {
+#if TARAGET_OS_IPHONE
   for (NSValue *selector in _originalImplementationsBySelector) {
     IMP implementation = _originalImplementationsBySelector[selector].pointerValue;
     Method method = class_getInstanceMethod([_appDelegate class], selector.pointerValue);
     imp_removeBlock(method_setImplementation(method, implementation));
   }
+#endif
 }
 
 - (void)addHandler:(__weak id<FIRAuthAppDelegateHandler>)handler {
@@ -129,12 +146,18 @@ static id noop(id object, SEL cmd, ...) {
   static dispatch_once_t onceToken;
   static FIRAuthAppDelegateProxy *_Nullable sharedInstance;
   dispatch_once(&onceToken, ^{
+#if TARGET_OS_IPHONE
     sharedInstance = [[self alloc] initWithApplication:[UIApplication sharedApplication]];
+#else
+      sharedInstance = [[self alloc] init];
+#endif
   });
   return sharedInstance;
 }
 
 #pragma mark - UIApplicationDelegate proxy methods.
+
+#if TARGET_OS_IPHONE
 
 - (void)object:(id)object
                                             selector:(SEL)selector
@@ -239,6 +262,8 @@ static id noop(id object, SEL cmd, ...) {
 - (IMP)originalImplementationForSelector:(SEL)selector {
   return _originalImplementationsBySelector[[NSValue valueWithPointer:selector]].pointerValue;
 }
+
+#endif
 
 @end
 

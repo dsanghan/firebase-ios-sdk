@@ -15,7 +15,10 @@
  */
 
 #import <Foundation/Foundation.h>
+
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 @class FIRAuthAPNSToken;
 
@@ -45,6 +48,8 @@ typedef void (^FIRAuthAPNSTokenCallback)(FIRAuthAPNSToken *_Nullable token);
  */
 @property(nonatomic, assign) NSTimeInterval timeout;
 
+#if TARGET_OS_IPHONE
+
 /** @fn init
     @brief Call @c initWithApplication: to initialize an instance of this class.
  */
@@ -56,6 +61,8 @@ typedef void (^FIRAuthAPNSTokenCallback)(FIRAuthAPNSToken *_Nullable token);
     @return The initialized instance.
  */
 - (instancetype)initWithApplication:(UIApplication *)application NS_DESIGNATED_INITIALIZER;
+
+#endif
 
 /** @fn getTokenWithCallback:
     @brief Attempts to get the APNs token.

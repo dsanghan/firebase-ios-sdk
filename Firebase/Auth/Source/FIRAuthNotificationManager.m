@@ -52,7 +52,9 @@ static const NSTimeInterval kProbingTimeout = 1;
   /** @var _application
       @brief The application.
    */
+#if TARGET_OS_IPHONE
   UIApplication *_application;
+#endif
 
   /** @var _appCredentialManager
       @brief The object to handle app credentials delivered via notification.
@@ -75,6 +77,8 @@ static const NSTimeInterval kProbingTimeout = 1;
   NSMutableArray<FIRAuthNotificationForwardingCallback> *_pendingCallbacks;
 }
 
+#if TARGET_OS_IPHONE
+
 - (instancetype)initWithApplication:(UIApplication *)application
                appCredentialManager:(FIRAuthAppCredentialManager *)appCredentialManager {
   self = [super init];
@@ -85,6 +89,19 @@ static const NSTimeInterval kProbingTimeout = 1;
   }
   return self;
 }
+
+#else
+
+- (instancetype)initWithAppCredentialManager:(FIRAuthAppCredentialManager *)appCredentialManager {
+    self = [super init];
+    if (self) {
+        _appCredentialManager = appCredentialManager;
+        _timeout = kProbingTimeout;
+    }
+    return self;
+}
+
+#endif
 
 - (void)checkNotificationForwardingWithCallback:(FIRAuthNotificationForwardingCallback)callback {
   if (_pendingCallbacks) {
@@ -98,6 +115,8 @@ static const NSTimeInterval kProbingTimeout = 1;
   _hasCheckedNotificationForwarding = YES;
   _pendingCallbacks =
       [[NSMutableArray<FIRAuthNotificationForwardingCallback> alloc] initWithObjects:callback, nil];
+    
+#if TARGET_OS_IPHONE
   dispatch_async(dispatch_get_main_queue(), ^{
     NSDictionary *proberNotification = @{
       kNotificationDataKey : @{
@@ -119,6 +138,7 @@ static const NSTimeInterval kProbingTimeout = 1;
                   @"authentication to work.");
     }
   });
+#endif
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_timeout * NSEC_PER_SEC)),
                                FIRAuthGlobalWorkQueue(), ^{
     [self callBack];

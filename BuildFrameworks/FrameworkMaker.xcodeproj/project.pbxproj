@@ -7,14 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1100646DAFD3C5213C4FBC0C /* libPods-FrameworkMakerMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 819C1E3B1F24EA7390E1CB60 /* libPods-FrameworkMakerMac.a */; };
 		C8F75C1E8772455450E51C69 /* libPods-FrameworkMaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D25AC01A0F56F8BC5375DD2 /* libPods-FrameworkMaker.a */; };
+		D74F78241EDBF9F300149477 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D74F78231EDBF9F300149477 /* AppDelegate.m */; };
+		D74F78271EDBF9F300149477 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D74F78261EDBF9F300149477 /* main.m */; };
+		D74F782A1EDBF9F300149477 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D74F78291EDBF9F300149477 /* ViewController.m */; };
+		D74F782C1EDBF9F300149477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D74F782B1EDBF9F300149477 /* Assets.xcassets */; };
+		D74F782F1EDBF9F300149477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D74F782D1EDBF9F300149477 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01F29B956E7F6E45EF34DE72 /* Pods-FrameworkMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameworkMaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameworkMaker/Pods-FrameworkMaker.release.xcconfig"; sourceTree = "<group>"; };
 		05A46BD71CC9B2BE007BDB33 /* FrameworkMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrameworkMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D25AC01A0F56F8BC5375DD2 /* libPods-FrameworkMaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FrameworkMaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40E1E6685F073FED59AC4A47 /* Pods-FrameworkMakerMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameworkMakerMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameworkMakerMac/Pods-FrameworkMakerMac.release.xcconfig"; sourceTree = "<group>"; };
+		53B3C729352162DA941E4D39 /* Pods-FrameworkMakerMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameworkMakerMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrameworkMakerMac/Pods-FrameworkMakerMac.debug.xcconfig"; sourceTree = "<group>"; };
+		819C1E3B1F24EA7390E1CB60 /* libPods-FrameworkMakerMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FrameworkMakerMac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8DA4EE8A169B227B0576C02 /* Pods-FrameworkMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameworkMaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrameworkMaker/Pods-FrameworkMaker.debug.xcconfig"; sourceTree = "<group>"; };
+		D74F78201EDBF9F200149477 /* FrameworkMakerMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrameworkMakerMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D74F78221EDBF9F300149477 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D74F78231EDBF9F300149477 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D74F78261EDBF9F300149477 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D74F78281EDBF9F300149477 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D74F78291EDBF9F300149477 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D74F782B1EDBF9F300149477 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D74F782E1EDBF9F300149477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +43,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D74F781D1EDBF9F200149477 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1100646DAFD3C5213C4FBC0C /* libPods-FrameworkMakerMac.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		05A46BCE1CC9B2BE007BDB33 = {
 			isa = PBXGroup;
 			children = (
+				D74F78211EDBF9F300149477 /* FrameworkMakerMac */,
 				05A46BD81CC9B2BE007BDB33 /* Products */,
 				AA03828B8B59297B5A3389B0 /* Pods */,
 				D3884AD1918E82D7FD21433D /* Frameworks */,
@@ -42,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				05A46BD71CC9B2BE007BDB33 /* FrameworkMaker.app */,
+				D74F78201EDBF9F200149477 /* FrameworkMakerMac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,6 +78,8 @@
 			children = (
 				C8DA4EE8A169B227B0576C02 /* Pods-FrameworkMaker.debug.xcconfig */,
 				01F29B956E7F6E45EF34DE72 /* Pods-FrameworkMaker.release.xcconfig */,
+				53B3C729352162DA941E4D39 /* Pods-FrameworkMakerMac.debug.xcconfig */,
+				40E1E6685F073FED59AC4A47 /* Pods-FrameworkMakerMac.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -59,8 +88,31 @@
 			isa = PBXGroup;
 			children = (
 				1D25AC01A0F56F8BC5375DD2 /* libPods-FrameworkMaker.a */,
+				819C1E3B1F24EA7390E1CB60 /* libPods-FrameworkMakerMac.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D74F78211EDBF9F300149477 /* FrameworkMakerMac */ = {
+			isa = PBXGroup;
+			children = (
+				D74F78221EDBF9F300149477 /* AppDelegate.h */,
+				D74F78231EDBF9F300149477 /* AppDelegate.m */,
+				D74F78281EDBF9F300149477 /* ViewController.h */,
+				D74F78291EDBF9F300149477 /* ViewController.m */,
+				D74F782B1EDBF9F300149477 /* Assets.xcassets */,
+				D74F782D1EDBF9F300149477 /* Main.storyboard */,
+				D74F78251EDBF9F300149477 /* Supporting Files */,
+			);
+			path = FrameworkMakerMac;
+			sourceTree = "<group>";
+		};
+		D74F78251EDBF9F300149477 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D74F78261EDBF9F300149477 /* main.m */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +138,26 @@
 			productReference = 05A46BD71CC9B2BE007BDB33 /* FrameworkMaker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D74F781F1EDBF9F200149477 /* FrameworkMakerMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D74F78331EDBF9F300149477 /* Build configuration list for PBXNativeTarget "FrameworkMakerMac" */;
+			buildPhases = (
+				A5ED1F7347D7F93121D4E444 /* [CP] Check Pods Manifest.lock */,
+				D74F781C1EDBF9F200149477 /* Sources */,
+				D74F781D1EDBF9F200149477 /* Frameworks */,
+				D74F781E1EDBF9F200149477 /* Resources */,
+				33678AED25802E3FF76F0969 /* [CP] Embed Pods Frameworks */,
+				DC35A17CD5AF7009FBC3D00D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FrameworkMakerMac;
+			productName = FrameworkMakerMac;
+			productReference = D74F78201EDBF9F200149477 /* FrameworkMakerMac.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -97,6 +169,10 @@
 				TargetAttributes = {
 					05A46BD61CC9B2BE007BDB33 = {
 						CreatedOnToolsVersion = 7.3;
+					};
+					D74F781F1EDBF9F200149477 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -114,6 +190,7 @@
 			projectRoot = "";
 			targets = (
 				05A46BD61CC9B2BE007BDB33 /* FrameworkMaker */,
+				D74F781F1EDBF9F200149477 /* FrameworkMakerMac */,
 			);
 		};
 /* End PBXProject section */
@@ -123,6 +200,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D74F781E1EDBF9F200149477 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D74F782C1EDBF9F300149477 /* Assets.xcassets in Resources */,
+				D74F782F1EDBF9F300149477 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +230,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrameworkMaker/Pods-FrameworkMaker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		33678AED25802E3FF76F0969 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrameworkMakerMac/Pods-FrameworkMakerMac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5040608D1004852F08A22A14 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,6 +260,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrameworkMaker/Pods-FrameworkMaker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A5ED1F7347D7F93121D4E444 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		AC1C2B143A86214CE77C9932 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,7 +287,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DC35A17CD5AF7009FBC3D00D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrameworkMakerMac/Pods-FrameworkMakerMac-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -184,7 +315,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D74F781C1EDBF9F200149477 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D74F782A1EDBF9F300149477 /* ViewController.m in Sources */,
+				D74F78271EDBF9F300149477 /* main.m in Sources */,
+				D74F78241EDBF9F300149477 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D74F782D1EDBF9F300149477 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D74F782E1EDBF9F300149477 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		05A46BEC1CC9B2BE007BDB33 /* Debug */ = {
@@ -293,6 +445,88 @@
 			};
 			name = Release;
 		};
+		D74F78311EDBF9F300149477 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53B3C729352162DA941E4D39 /* Pods-FrameworkMakerMac.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_ON_DEMAND_RESOURCES = YES;
+				INFOPLIST_FILE = FrameworkMakerMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"FirebaseAuth\"",
+					"-l\"FirebaseCore\"",
+					"-l\"FirebaseDatabase\"",
+					"-l\"FirebaseMessaging\"",
+					"-l\"FirebaseStorage\"",
+					"-l\"GTMSessionFetcher\"",
+					"-l\"GoogleToolboxForMac\"",
+					"-l\"c++\"",
+					"-l\"Protobuf\"",
+					"-l\"icucore\"",
+					"-l\"leveldb-library\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.canarymail.FrameworkMakerMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D74F78321EDBF9F300149477 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40E1E6685F073FED59AC4A47 /* Pods-FrameworkMakerMac.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_ON_DEMAND_RESOURCES = YES;
+				INFOPLIST_FILE = FrameworkMakerMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"FirebaseAuth\"",
+					"-l\"FirebaseCore\"",
+					"-l\"FirebaseDatabase\"",
+					"-l\"FirebaseMessaging\"",
+					"-l\"FirebaseStorage\"",
+					"-l\"GTMSessionFetcher\"",
+					"-l\"GoogleToolboxForMac\"",
+					"-l\"c++\"",
+					"-l\"Protobuf\"",
+					"-l\"icucore\"",
+					"-l\"leveldb-library\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.canarymail.FrameworkMakerMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -313,6 +547,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D74F78331EDBF9F300149477 /* Build configuration list for PBXNativeTarget "FrameworkMakerMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D74F78311EDBF9F300149477 /* Debug */,
+				D74F78321EDBF9F300149477 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

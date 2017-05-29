@@ -15,7 +15,10 @@
  */
 
 #import <Foundation/Foundation.h>
+
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 @class FIRAuthAppCredentialManager;
 
@@ -43,14 +46,24 @@ typedef void (^FIRAuthNotificationForwardingCallback)(BOOL isNotificationBeingFo
     @param appCredentialManager The object to handle app credentials delivered via notification.
     @return The initialized instance.
  */
+
+#if TARGET_OS_IPHONE
+
 - (instancetype)initWithApplication:(UIApplication *)application
                appCredentialManager:(FIRAuthAppCredentialManager *)appCredentialManager
     NS_DESIGNATED_INITIALIZER;
+
+#else
+
+- (instancetype)initWithAppCredentialManager:(FIRAuthAppCredentialManager *)appCredentialManager NS_DESIGNATED_INITIALIZER;
+
+#endif
 
 /** @fn init
     @brief please use initWithAppCredentialManager: instead.
  */
 - (instancetype)init NS_UNAVAILABLE;
+
 
 /** @fn checkNotificationForwardingWithCallback:
     @brief Checks whether or not remote notifications are being forwarded to this class.

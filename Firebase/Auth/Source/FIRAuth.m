@@ -307,6 +307,7 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
         if (strongSelf && !strongSelf->_autoRefreshTokens) {
           FIRLogInfo(kFIRLoggerAuth, @"I-AUT000002", @"Token auto-refresh enabled.");
           strongSelf->_autoRefreshTokens = YES;
+#if TARGET_OS_IPHONE
           strongSelf->_applicationDidBecomeActiveObserver = [[NSNotificationCenter defaultCenter]
               addObserverForName:UIApplicationDidBecomeActiveNotification
                           object:nil
@@ -330,6 +331,11 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
               strongSelf->_isAppInBackground = YES;
             }
           }];
+#else
+            if (!strongSelf->_autoRefreshScheduled) {
+                [weakSelf scheduleAutoTokenRefresh];
+            }
+#endif
         }
         if (!strongSelf.currentUser) {
           dispatch_async(dispatch_get_main_queue(), ^{
@@ -377,12 +383,18 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
                   @"Error loading saved user when starting up: %@", error);
     }
     // Initialize for phone number auth.
+#if TARTGET_OS_IPHONE
     _tokenManager =
         [[FIRAuthAPNSTokenManager alloc] initWithApplication:[UIApplication sharedApplication]];
     _appCredentialManager = [[FIRAuthAppCredentialManager alloc] initWithKeychain:_keychain];
     _notificationManager =
         [[FIRAuthNotificationManager alloc] initWithApplication:[UIApplication sharedApplication]
                                            appCredentialManager:_appCredentialManager];
+#else
+      _tokenManager = [[FIRAuthAPNSTokenManager alloc] init];
+      _appCredentialManager = [[FIRAuthAppCredentialManager alloc] initWithKeychain:_keychain];
+      _notificationManager = [[FIRAuthNotificationManager alloc] initWithAppCredentialManager:_appCredentialManager];
+#endif
     [[FIRAuthAppDelegateProxy sharedInstance] addHandler:self];
   }
   return self;
@@ -396,12 +408,14 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
       [defaultCenter removeObserver:handleToRemove];
       [_listenerHandles removeLastObject];
     }
+#if TARGET_OS_IPHONE
     [defaultCenter removeObserver:_applicationDidBecomeActiveObserver
                              name:UIApplicationDidBecomeActiveNotification
                            object:nil];
     [defaultCenter removeObserver:_applicationDidEnterBackgroundObserver
                              name:UIApplicationDidEnterBackgroundNotification
                            object:nil];
+#endif
   }
 }
 

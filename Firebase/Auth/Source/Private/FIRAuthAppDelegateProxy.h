@@ -15,7 +15,10 @@
  */
 
 #import <Foundation/Foundation.h>
+
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -44,6 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface FIRAuthAppDelegateProxy : NSObject
 
+
+#if TARGET_OS_IPHONE
 /** @fn initWithApplication
     @brief Initialize the instance with the given @c UIApplication.
     @returns An initialized instance, or @c nil if a proxy cannot be established.
@@ -56,6 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
     @brief Call @c sharedInstance to get an instance of this class.
  */
 - (instancetype)init NS_UNAVAILABLE;
+
+#endif
 
 /** @fn addHandler:
     @brief Adds a handler for UIApplicationDelegate methods.

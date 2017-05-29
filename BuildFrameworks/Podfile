@@ -1,12 +1,21 @@
-platform :ios, '7.0'
-
 project 'FrameworkMaker.xcodeproj'
 
 target 'FrameworkMaker' do
+  platform :ios, '7.0'
   pod 'FirebaseAuth', :path => '../Firebase/Auth'
   pod 'FirebaseCore', :path => '../Firebase/Core'
   pod 'FirebaseDatabase', :path => '../Firebase/Database'
   pod 'FirebaseMessaging', :path => '../Firebase/Messaging'
   pod 'FirebaseStorage', :path => '../Firebase/Storage'
 end
+
+target 'FrameworkMakerMac' do
+  platform :osx, '10.10'
+  pod 'FirebaseAuth', :path => '../Firebase/Auth'
+  pod 'FirebaseCore', :path => '../Firebase/Core'
+  pod 'FirebaseDatabase', :path => '../Firebase/Database'
+  pod 'FirebaseMessaging', :path => '../Firebase/Messaging'
+  pod 'FirebaseStorage', :path => '../Firebase/Storage'
+end
+
 

@@ -21,7 +21,9 @@
 #import "FIRMessaging.h"
 #import "FIRMessaging_Private.h"
 
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 #import "FIRMessagingClient.h"
 #import "FIRMessagingConfig.h"
@@ -241,6 +243,7 @@ NSString * const FIRMessagingRegistrationTokenRefreshedNotification =
                  name:kFIRMessagingAPNSTokenNotification
                object:nil];
 
+#if TARGET_OS_PHONE
   [center addObserver:self
              selector:@selector(applicationStateChanged)
                  name:UIApplicationDidBecomeActiveNotification
@@ -249,6 +252,7 @@ NSString * const FIRMessagingRegistrationTokenRefreshedNotification =
              selector:@selector(applicationStateChanged)
                  name:UIApplicationDidEnterBackgroundNotification
                object:nil];
+#endif
 }
 
 - (void)saveLibraryVersion {
@@ -402,6 +406,8 @@ NSString * const FIRMessagingRegistrationTokenRefreshedNotification =
     });
     return;
   }
+    
+#if TARGET_OS_IPHONE
   UIApplication *application = [UIApplication sharedApplication];
   id<UIApplicationDelegate> appDelegate = application.delegate;
   SEL continueUserActivitySelector =
@@ -439,6 +445,7 @@ NSString * const FIRMessagingRegistrationTokenRefreshedNotification =
   } else if ([appDelegate respondsToSelector:handleOpenURLSelector]) {
     [appDelegate application:application handleOpenURL:url];
   }
+#endif
 }
 
 - (NSURL *)linkURLFromMessage:(NSDictionary *)message {
@@ -555,11 +562,16 @@ NSString * const FIRMessagingRegistrationTokenRefreshedNotification =
   // We require a token from Instance ID
   NSString *token = self.defaultFcmToken;
   // Only on foreground connections
+    
+#if TARGET_OS_IPHONE
   UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
   BOOL shouldBeConnected = _shouldEstablishDirectChannel &&
                            (token.length > 0) &&
                            applicationState == UIApplicationStateActive;
   return shouldBeConnected;
+#else
+    return YES;
+#endif
 }
 
 - (void)updateAutomaticClientConnection {

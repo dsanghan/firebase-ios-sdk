@@ -17,7 +17,10 @@
 #import "FIRMessagingRemoteNotificationsProxy.h"
 
 #import <objc/runtime.h>
+
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 #import "FIRMessagingConstants.h"
 #import "FIRMessagingLogger.h"
@@ -94,6 +97,8 @@ static NSString *kUserNotificationWillPresentSelectorString =
   if (self.didSwizzleMethods) {
     return;
   }
+    
+#if TARGET_OS_IPHONE
 
   NSObject<UIApplicationDelegate> *appDelegate = [[UIApplication sharedApplication] delegate];
   [self swizzleAppDelegateMethods:appDelegate];
@@ -109,6 +114,7 @@ static NSString *kUserNotificationWillPresentSelectorString =
       [self listenForDelegateChangesInUserNotificationCenter:notificationCenter];
     }
   }
+#endif
 
   self.didSwizzleMethods = YES;
 }
@@ -124,6 +130,8 @@ static NSString *kUserNotificationWillPresentSelectorString =
   }
   [self.swizzledSelectorsByClass removeAllObjects];
 }
+
+#if TARGET_OS_IPHONE
 
 - (void)swizzleAppDelegateMethods:(id<UIApplicationDelegate>)appDelegate {
   if (![appDelegate conformsToProtocol:@protocol(UIApplicationDelegate)]) {
@@ -192,6 +200,8 @@ static NSString *kUserNotificationWillPresentSelectorString =
   self.didSwizzleAppDelegateMethods = didSwizzleAppDelegate;
 }
 
+#endif
+
 - (void)listenForDelegateChangesInUserNotificationCenter:(id)notificationCenter {
   Class notificationCenterClass = NSClassFromString(@"UNUserNotificationCenter");
   if (![notificationCenter isKindOfClass:notificationCenterClass]) {
@@ -210,6 +220,7 @@ static NSString *kUserNotificationWillPresentSelectorString =
 #pragma mark - UNNotificationCenter Swizzling
 
 - (void)swizzleUserNotificationCenterDelegate:(id)delegate {
+#if TARGET_OS_IPHONE
   if (self.currentUserNotificationCenterDelegate == delegate) {
     // Via pointer-check, compare if we have already swizzled this item.
     return;
@@ -226,6 +237,7 @@ static NSString *kUserNotificationWillPresentSelectorString =
     self.currentUserNotificationCenterDelegate = delegate;
     self.hasSwizzledUserNotificationDelegate = YES;
   }
+#endif
 }
 
 - (void)unswizzleUserNotificationCenterDelegate:(id)delegate {
@@ -438,6 +450,8 @@ id getNamedPropertyFromObject(id object, NSString *propertyName, Class klass) {
 
 #pragma mark - Swizzled Methods
 
+#if TARGET_OS_IPHONE
+
 void FCM_swizzle_appDidReceiveRemoteNotification(id self,
                                                  SEL _cmd,
                                                  UIApplication *app,
@@ -609,5 +623,7 @@ void FCM_swizzle_appDidRegisterForRemoteNotifications(id self,
     ((void (*)(id, SEL, UIApplication *, NSData *))original_imp)(self, _cmd, app, deviceToken);
   }
 }
+
+#endif
 
 @end

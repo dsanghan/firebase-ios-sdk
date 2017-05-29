@@ -16,7 +16,9 @@
 
 #import "FIRMessagingReceiver.h"
 
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 #import "FIRMessaging.h"
 #import "FIRMessaging_Private.h"
@@ -106,6 +108,7 @@ static int downstreamMessageID = 0;
 }
 
 - (void)scheduleNotificationForMessage:(NSDictionary *)message {
+#if TARGET_OS_IPHONE
   SEL newNotificationSelector =
       @selector(application:didReceiveRemoteNotification:fetchCompletionHandler:);
   SEL oldNotificationSelector = @selector(application:didReceiveRemoteNotification:);
@@ -129,6 +132,7 @@ static int downstreamMessageID = 0;
                               @"UIApplicationDelegate");
     }
   });
+#endif
 }
 
 + (NSString *)nextMessageID {

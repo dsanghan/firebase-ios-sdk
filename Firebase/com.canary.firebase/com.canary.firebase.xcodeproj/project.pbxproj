@@ -1,0 +1,82 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		D74F783B1EDC034500149477 /* Auth */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Auth; path = ../Auth; sourceTree = "<group>"; };
+		D74F783C1EDC034500149477 /* Core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Core; path = ../Core; sourceTree = "<group>"; };
+		D74F783D1EDC034500149477 /* Database */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Database; path = ../Database; sourceTree = "<group>"; };
+		D74F783E1EDC034500149477 /* Firebase */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Firebase; path = ../Firebase; sourceTree = "<group>"; };
+		D74F783F1EDC034500149477 /* Messaging */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Messaging; path = ../Messaging; sourceTree = "<group>"; };
+		D74F78401EDC034500149477 /* Storage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Storage; path = ../Storage; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D74F78341EDC033600149477 = {
+			isa = PBXGroup;
+			children = (
+				D74F783B1EDC034500149477 /* Auth */,
+				D74F783C1EDC034500149477 /* Core */,
+				D74F783D1EDC034500149477 /* Database */,
+				D74F783E1EDC034500149477 /* Firebase */,
+				D74F783F1EDC034500149477 /* Messaging */,
+				D74F78401EDC034500149477 /* Storage */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		D74F78351EDC033600149477 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+			};
+			buildConfigurationList = D74F78381EDC033600149477 /* Build configuration list for PBXProject "com.canary.firebase" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D74F78341EDC033600149477;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		D74F78391EDC033600149477 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		D74F783A1EDC033600149477 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D74F78381EDC033600149477 /* Build configuration list for PBXProject "com.canary.firebase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D74F78391EDC033600149477 /* Debug */,
+				D74F783A1EDC033600149477 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D74F78351EDC033600149477 /* Project object */;
+}
